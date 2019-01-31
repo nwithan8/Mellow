@@ -50,7 +50,7 @@ function requestTVShow(ombi, msg, showMsg, show) {
 					body: JSON.stringify({ "tvDbId": show.id, "requestAll" : true })
 				}).then((resolve) => {
 					if (msg.member.roles.some(role => role.name === ombi.requesttv))
-						msg.member.roles.remove(msg.member.roles.find(role => role.name === ombi.requesttv));
+						msg.member.roles.remove(msg.member.roles.find(role => role.name === ombi.requesttv)).catch(console.error);
 					return msg.reply(`Requested ${show.title} in Ombi.`);
 				}).catch((error) => {
 					console.error(error);

@@ -48,7 +48,7 @@ function requestMovie(ombi, msg, movieMsg, movie) {
 					body: JSON.stringify({ "theMovieDbId": movie.theMovieDbId })
 				}).then((resolve) => {
 					if (msg.member.roles.some(role => role.name === ombi.requestmovie))
-						msg.member.roles.remove(msg.member.roles.find(role => role.name === ombi.requestmovie));
+						msg.member.roles.remove(msg.member.roles.find(role => role.name === ombi.requestmovie)).catch(console.error);
 					return msg.reply(`Requested ${movie.title} in Ombi.`);
 				}).catch((error) => {
 					console.error(error);
